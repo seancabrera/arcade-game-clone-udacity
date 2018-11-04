@@ -9,7 +9,7 @@
  * drawn but that is not the case. What's really happening is the entire "scene"
  * is being drawn over and over, presenting the illusion of animation.
  *
- * This engine makes the canvas' context (ctx) object globally available to make 
+ * This engine makes the canvas' context (ctx) object globally available to make
  * writing app.js a little simpler to work with.
  */
 
@@ -79,7 +79,7 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -94,6 +94,29 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+    }
+
+    /* This checks if any of the enemies are colliding with the player*.
+     * If so, the player is moved to its starting position
+     */
+    function checkCollisions() {
+        allEnemies.forEach(enemy => {
+            if(isCollidingWithPlayer(enemy)) {
+                player.movePlayerToStart();
+            }
+        });
+    }
+
+    /* Returns true if the enemy is colliding with the player.
+     * This uses a rectangular bounding box collision detection
+     * described here:
+     * https://stackoverflow.com/questions/13916966/adding-collision-detection-to-images-drawn-on-canvas
+     */
+    function isCollidingWithPlayer(enemy) {
+        return enemy.x < player.x + 65  &&
+            enemy.x + 65  > player.x &&
+            enemy.y < player.y + 65 &&
+            enemy.y + 65 > player.y;
     }
 
     /* This function initially draws the "game level", it will then call
@@ -117,7 +140,7 @@ var Engine = (function(global) {
             numRows = 6,
             numCols = 5,
             row, col;
-        
+
         // Before drawing, clear existing canvas
         ctx.clearRect(0,0,canvas.width,canvas.height)
 

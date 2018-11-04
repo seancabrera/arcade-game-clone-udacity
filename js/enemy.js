@@ -22,21 +22,10 @@ class Enemy {
         if(this.isRightOfCanvas()) {
             this.setRandomSpeedAndLocation();
         }
-
-        if(this.isCollidingWithPlayer()) {
-            player.movePlayerToStart();
-        }
     }
 
     isRightOfCanvas() {
         return this.x > 500;
-    }
-
-    isCollidingWithPlayer() {
-        return this.x < player.x + 65  &&
-            this.x + 65  > player.x &&
-            this.y < player.y + 65 &&
-            this.y + 65 > player.y;
     }
 
     // Draw the enemy on the screen, required method for game
