@@ -2,13 +2,13 @@
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const allEnemies = [];
-
-
 const player = new Player();
 
 createEnemies();
 
 function createEnemies() {
+    // Create 8 enemies. This makes the game challenging
+    // but still playable.
     for(var i=0; i<8; i++) {
         allEnemies.push(new Enemy());
     }

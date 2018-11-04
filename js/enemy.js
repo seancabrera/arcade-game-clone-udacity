@@ -1,4 +1,6 @@
-// Enemies our player must avoid
+/*
+* Enemy character - character the player must avoid
+*/
 class Enemy {
     constructor() {
         // Variables applied to each of our instances go here,
@@ -19,6 +21,10 @@ class Enemy {
         // all computers.
         this.x = this.x + (dt*this.speed);
 
+        // This "enemy" object is reused after it has been
+        // played. Once it's to the right of the canvas,
+        // set a random speed and location to the left of the
+        // canvas so that it will be played on the screen again
         if(this.isRightOfCanvas()) {
             this.setRandomSpeedAndLocation();
         }
@@ -33,6 +39,9 @@ class Enemy {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
+    /*
+    * Sets a random location and speed for the enemy.
+    */
     setRandomSpeedAndLocation() {
         this.speed = getRandomSpeed();
         this.y = getRandomYPosition();
@@ -40,15 +49,27 @@ class Enemy {
     }
 }
 
+/*
+* Gets a random speed between 100 and 600
+*/
 function getRandomSpeed() {
     return Math.random() * 500 + 100;
 }
 
+/*
+* Gets a random x position between -1100 and -100.
+* The higher the negative value, the longer the delay
+* before the enemy shows up on screen.
+*/
 function getRandomXPosition() {
     const random = Math.random();
     return (random * (-1000)) - 100;
 }
 
+/*
+* Gets a random y position for the enemy. The possible
+* values correspond to the rows of concrete in the game.
+*/
 function getRandomYPosition() {
     const randomNum = getRandomInt(3);
     if(randomNum === 0) {
@@ -60,7 +81,11 @@ function getRandomYPosition() {
     }
 }
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+/*
+* Gets a random int. This function was taken from:
+* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+* on 11/4/2018
+*/
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }

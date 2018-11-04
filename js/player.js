@@ -1,12 +1,16 @@
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+/*
+* This class represents the player (main game character)
+*/
 class Player {
     constructor() {
         this.sprite ='images/char-boy.png';
         this.movePlayerToStart();
     }
 
+    /*
+    * Receives an input from the keyboard and moves the
+    * player appropriately.
+    */
     handleInput(input) {
         const HORIZONTAL_MOVE_DISTANCE = 101;
         const VERTICAL_MOVE_DISTANCE = 83;
@@ -16,16 +20,19 @@ class Player {
         const MAX_PLAYER_Y = 390;
 
         if(input === 'left' && this.x > MIN_PLAYER_X) {
-            this.x = this.x - HORIZONTAL_MOVE_DISTANCE;
+            this.x -= HORIZONTAL_MOVE_DISTANCE;
         } else if(input === 'right' && this.x < MAX_PLAYER_X) {
-            this.x = this.x + HORIZONTAL_MOVE_DISTANCE;
+            this.x += HORIZONTAL_MOVE_DISTANCE;
         } else if(input === 'up' && this.y > MIN_PLAYER_Y) {
-            this.y = this.y - VERTICAL_MOVE_DISTANCE;
+            this.y -= VERTICAL_MOVE_DISTANCE;
+
+            // If the player has reached the water, move back
+            // to the start after a small delay
             if(this.y <= MIN_PLAYER_Y) {
                 setTimeout(this.movePlayerToStart.bind(this), 250);
             }
         } else if(input === 'down' && this.y < MAX_PLAYER_Y) {
-            this.y = this.y + VERTICAL_MOVE_DISTANCE;
+            this.y += VERTICAL_MOVE_DISTANCE;
         }
     }
 
@@ -38,6 +45,9 @@ class Player {
         // doesn't need to do anything
     }
 
+    /*
+    * Moves the player to the "starting position"
+    */
     movePlayerToStart() {
         const INITIAL_PLAYER_X = 202;
         const INITIAL_PLAYER_Y = 390;
