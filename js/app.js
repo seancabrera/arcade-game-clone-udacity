@@ -1,3 +1,5 @@
+'use strict';
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -91,6 +93,7 @@ function decreaseTimer() {
 function endGame() {
     stopTimer();
 
+    // Stop the characters from moving
     allEnemies.forEach(enemy => enemy.setEnabled(false));
     player.setEnabled(false);
 
