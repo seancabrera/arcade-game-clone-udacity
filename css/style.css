@@ -21,6 +21,10 @@ canvas {
     float: right;
 }
 
+
+/*
+* Customize the sweetalert modal
+*/
 .swal-text {
     font-size: 24px;
 }
@@ -31,4 +35,8 @@ canvas {
 
 .swal-overlay {
     background-color: rgba(0,0,50,.5);
+}
+
+.swal-button {
+    background-color: red;
 }
