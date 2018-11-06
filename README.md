@@ -16,11 +16,11 @@ To run the game locally, first clone or download the project:
 
 `git clone https://github.com/seancabrera/arcade-game-clone-udacity.git`
 
-Then open index.html in a browser
+Then open `index.html` in a browser
 
 
 ## Demo
-Play the game here: https://seancabrera.github.io/arcade-game-clone-udacity/
+Play the game here: [https://seancabrera.github.io/arcade-game-clone-udacity/](https://seancabrera.github.io/arcade-game-clone-udacity/)
 
 
 ## Overview
