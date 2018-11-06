@@ -9,7 +9,7 @@ class Enemy {
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images
         this.sprite = 'images/enemy-bug.png';
-
+        this.setEnabled(false);
         this.setRandomSpeedAndLocation();
     }
 
@@ -19,14 +19,16 @@ class Enemy {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
-        this.x = this.x + (dt*this.speed);
+        if(this.enabled) {
+            this.x = this.x + (dt*this.speed);
 
-        // This "enemy" object is reused after it has been
-        // played. Once it's to the right of the canvas,
-        // set a random speed and location to the left of the
-        // canvas so that it will be played on the screen again
-        if(this.isRightOfCanvas()) {
-            this.setRandomSpeedAndLocation();
+            // This "enemy" object is reused after it has been
+            // played. Once it's to the right of the canvas,
+            // set a random speed and location to the left of the
+            // canvas so that it will be played on the screen again
+            if(this.isRightOfCanvas()) {
+                this.setRandomSpeedAndLocation();
+            }
         }
     }
 
@@ -37,6 +39,10 @@ class Enemy {
     // Draw the enemy on the screen, required method for game
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+
+    setEnabled(enabled) {
+        this.enabled = enabled;
     }
 
     /*

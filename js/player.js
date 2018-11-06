@@ -5,6 +5,8 @@ class Player {
     constructor() {
         this.sprite ='images/char-boy.png';
         this.movePlayerToStart();
+        this.setEnabled(false);
+        this.playerScoredCallbacks = [];
     }
 
     /*
@@ -12,6 +14,10 @@ class Player {
     * player appropriately.
     */
     handleInput(input) {
+        if(!this.enabled) {
+            return;
+        }
+
         const HORIZONTAL_MOVE_DISTANCE = 101;
         const VERTICAL_MOVE_DISTANCE = 83;
         const MIN_PLAYER_X = 0;
@@ -30,6 +36,8 @@ class Player {
             // to the start after a small delay
             if(this.y <= MIN_PLAYER_Y) {
                 setTimeout(this.movePlayerToStart.bind(this), 250);
+
+                this.playerScoredCallbacks.forEach(callback => callback());
             }
         } else if(input === 'down' && this.y < MAX_PLAYER_Y) {
             this.y += VERTICAL_MOVE_DISTANCE;
@@ -53,5 +61,13 @@ class Player {
         const INITIAL_PLAYER_Y = 390;
         this.x = INITIAL_PLAYER_X;
         this.y = INITIAL_PLAYER_Y;
+    }
+
+    addPlayerScoredCallback(playerScoredCallback) {
+        this.playerScoredCallbacks.push(playerScoredCallback);
+    }
+
+    setEnabled(enabled) {
+        this.enabled = enabled;
     }
 }
