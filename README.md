@@ -6,21 +6,9 @@ bugs.
 
 ## Table of Contents
 
-* [Instructions](#instructions)
-* [Demo](#demo)
 * [Overview](#overview)
-
-
-## Instructions
-To run the game locally, first clone or download the project:
-
-`git clone https://github.com/seancabrera/arcade-game-clone-udacity.git`
-
-Then open `index.html` in a browser
-
-
-## Demo
-Play the game here: [https://seancabrera.github.io/arcade-game-clone-udacity/](https://seancabrera.github.io/arcade-game-clone-udacity/)
+* [Demo](#demo)
+* [Instructions](#instructions)
 
 
 ## Overview
@@ -31,3 +19,15 @@ characters around and detect collisions.
 
 This project demonstrates proficiency in object oriented programming with Javascript, 
 including ES6 classes.
+
+
+## Demo
+Play the game here: [https://seancabrera.github.io/arcade-game-clone-udacity/](https://seancabrera.github.io/arcade-game-clone-udacity/)
+
+
+## Local Build Instructions
+To run the game locally, first clone or download the project:
+
+`git clone https://github.com/seancabrera/arcade-game-clone-udacity.git`
+
+Then open `index.html` in a browser
